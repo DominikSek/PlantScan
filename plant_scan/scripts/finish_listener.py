@@ -2,7 +2,7 @@
 
 from std_msgs.msg import Bool
 import rospy
-
+import subprocess
 
 class Finish_Listener:
 
@@ -10,13 +10,21 @@ class Finish_Listener:
 	def finish_callback(self,data):
 		print("The node has finished its job? {}".format(data.data))
 		if(data.data==True):
-			path='/Images'
-			
-			### Privremeno dok ne uspijemo realizirati meshroom execution
-			### TODO
+			path='bin/images'
 			print("Executing meshroom at the path: "+path)
-			
-			rospy.signal_shutdown("The meshroom execution has succeeded")
+			executingString='bin/meshroom_photogrammetry --input '+ path +' --output 3D_Scan'
+			success=True
+			try:
+				success=subprocess.run([executingString],shell=True)
+				print(success)
+			except Exception as e:
+				print(e)
+			if success.returncode==1:
+				print("Meshroom launch has been successful")
+				rospy.signal_shutdown("Success")
+			else:
+				print("There has been an error launching meshroom")
+				rospy.signal_shutdown("Failure")
 
 
 	###Inicijalizacija Subscribera
