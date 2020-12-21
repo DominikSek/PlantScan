@@ -8,12 +8,13 @@ Potrebno za pokretanje:
 3) Kamera 
 
 Kako pokrenuti 3D rekonstrukciju (Pod pretpostavkom da launch file nije realiziran):
-1) Pullati plant_scan git
-2) Editati package.xml za svoj linux(samo podesiti @)
-3) Pokrenuti roscore
-4) Pozicionirati bash u /plant_scan/scripts folder
-5) Iskoristiti komandu: "rosrun plant_scan finish_listener.py"
-6) 
+1) Pullati plant_scan git i skinuti najnoviji Meshroom za linux(Preporučljivo pre-made inačicu) 
+2) Kopirati Meshroom folder contents u plant_scan/bin
+3) Editati package.xml za svoj linux(samo podesiti @)
+4) Pokrenuti roscore
+5) Pozicionirati bash u /plant_scan/scripts folder
+6) Iskoristiti komandu: "rosrun plant_scan finish_listener.py"
+7) 
     a)Pokrenuti ostale čvorove koji publishaju na /finished topic
     b)Samostalno publishati na topic /finished    --->    "rostopic pub /finished std_msgs/Bool True"
-7) Done.
+8) Done.
