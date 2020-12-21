@@ -19,7 +19,7 @@ class Finish_Listener:
 				print(success)
 			except Exception as e:
 				print(e)
-			if success.returncode==1:
+			if success.returncode==0:
 				print("Meshroom launch has been successful")
 				rospy.signal_shutdown("Success")
 			else:
