@@ -31,10 +31,12 @@ def ready_callback(msg):
     
         try:
             cv_image = bridge.imgmsg_to_cv2(img_msg, "passthrough")
+            b,g,r = cv2.split(cv_image)
+            rgb_cv_image = cv2.merge([r,g,b])
         except CvBridgeError as e:
             rospy.logerr("CvBridge Error: {0}".format(e))
         
-        save_image(cv_image)
+        save_image(rgb_cv_image)
         
         
     
