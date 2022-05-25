@@ -25,7 +25,7 @@ def cameraInit(binPath,baseDir,imgDir):
     imageFolder = "\"" + imgDir + "\""
     sensorDatabase = "\"" + str(Path(binPath).parent) + "/share/aliceVision/cameraSensors.db" "\""
     FOV = 170
-   
+
     output = "\"" + baseDir + taskFolder + "/cameraInit.sfm" + "\""
 
     cmdLine = binPath + "aliceVision_cameraInit" + f" --imageFolder {imageFolder} --sensorDatabase {sensorDatabase} --output {output}"
@@ -90,7 +90,7 @@ def featureMatching(binPath,baseDir,numberOfImages,imagesPerGroup=40):
     cmdLine += f"--imagePairsList {imagePairsList}"
     cmdLine += " --knownPosesGeometricErrorMax 5"       ##This is default in meshroom, could be changed in the future
     cmdLine += " --verboseLevel " + verboseLevel
-    cmdLine += f"--photometricMatchingMethod {method}"
+    cmdLine += f" --photometricMatchingMethod {method}"
 
     # These are all default parameters given by meshroom, except the debug files, that we use.
     cmdLine += " --describerTypes sift  --geometricEstimator acransac --geometricFilterType fundamental_matrix --distanceRatio 0.8"
@@ -125,7 +125,7 @@ def structureFromMotion(binPath, baseDir):
     # It pulls all the parameters given in featureMatching()
     cmdLine += f"--outputViewsAndPoses {outputViewsAndPoses} --extraInfoFolder {extraInfoFolder} --featuresFolders {featuresFolders} --matchesFolders {matchesFolders}"
     cmdLine += " --verboseLevel " + verboseLevel
-    cmdLine += f"--localizerEstimator {estimator}"
+    cmdLine += f" --localizerEstimator {estimator}"
     os.system(cmdLine)
 
 
@@ -175,7 +175,7 @@ def depthMapFilter(binPath,baseDir):
 
     cmdLine = binPath + "/aliceVision_depthMapFiltering" + f" --input {inputFolder}  --output {output} --depthMapsFolder {depthMapsFolder}"
     cmdLine += " --verboseLevel " + verboseLevel
-    cmdLine += "--nNearestCams 10"
+    cmdLine += " --nNearestCams 10"
     os.system(cmdLine)
 
 
@@ -193,7 +193,7 @@ def meshing(binPath, baseDir, maxInputPoints = 50000000, maxPoints=5000000):
     cmdLine += " --maxInputPoints " + str(maxInputPoints)
     cmdLine += " --maxPoints " + str(maxPoints)
     cmdLine += " --verboseLevel " + verboseLevel
-    cmdLine += "--estimateSpaceFromSfM true"
+    cmdLine += " --estimateSpaceFromSfM true"
 
     os.system(cmdLine)
 
