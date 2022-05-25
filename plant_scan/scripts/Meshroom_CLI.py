@@ -123,7 +123,7 @@ def structureFromMotion(binPath, baseDir):
 
     # Necessary folders to export data
     # It pulls all the parameters given in featureMatching()
-    cmdLine += f"--outputViewsAndPoses {outputViewsAndPoses} --extraInfoFolder {extraInfoFolder} --featuresFolders {featuresFolders} --matchesFolders {matchesFolders}"
+    cmdLine += f" --outputViewsAndPoses {outputViewsAndPoses} --extraInfoFolder {extraInfoFolder} --featuresFolders {featuresFolders} --matchesFolders {matchesFolders}"
     cmdLine += " --verboseLevel " + verboseLevel
     cmdLine += f" --localizerEstimator {estimator}"
     os.system(cmdLine)
