@@ -154,7 +154,7 @@ def depthMap(binPath, baseDir, numberOfImages, groupSize=6, downscale=2):
 
     # Downscale = 2 is the default value given by meshroom
     cmdLine += " --downscale " + str(downscale)
-    cmdLine += "--nbGPUs 0"     #   0 == Use all my GPU's
+    cmdLine += " --nbGPUs 0"     #   0 == Use all my GPU's
 
     # Splitting groups again
     for i in range(int(math.ceil(numberOfImages / groupSize))):
