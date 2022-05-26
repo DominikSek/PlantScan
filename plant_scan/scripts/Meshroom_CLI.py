@@ -46,7 +46,7 @@ def featureExtraction(binPath,baseDir , numberOfImages , imagesPerGroup=40):
     output = "\"" + baseDir + taskFolder + "\""
     cmdLine = binPath + "/aliceVision_featureExtraction" + f" --input {inputFolder} --output {output}"
 
-    cmdLine += f"--forceCpuExtraction {useCPU}"     ### Here it is possibly 1, testing further
+    cmdLine += f" --forceCpuExtraction {useCPU}"     ### Here it is possibly 1, testing further
 
     #Sending images in groups if there is too many (removing the overcrowding)
     if numberOfImages > imagesPerGroup:
